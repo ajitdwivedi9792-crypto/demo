@@ -1,22 +1,64 @@
+# bundle:
+#   name: demo
+
+# workspace:
+#   host: https://dbc-b889ed86-55c4.cloud.databricks.com
+
+# resources:
+#   jobs:
+#     demo_job:
+#       name: demo_job
+
+#       tasks:
+#         - task_key: run_notebook
+
+#           notebook_task:
+#             notebook_path: ./notebooks/merge_into_scenerios
+
+#       schedule:
+#         quartz_cron_expression: "0 0 6 * * ?"
+#         timezone_id: "Asia/Kolkata"
+#         pause_status: PAUSED
+
+# targets:
+#   dev:
+#     mode: development
+
+#     workspace:
+#       host: https://dev-workspace.cloud.databricks.com
+
+#   test:
+#     mode: production
+
+#     workspace:
+#       host: https://test-workspace.cloud.databricks.com
+
+#   prod:
+#     mode: production
+
+#     workspace:
+#       host: https://prod-workspace.cloud.databricks.com
+
+
 bundle:
   name: demo
-
-
-workspace:
-  host: https://dbc-b889ed86-55c4.cloud.databricks.com
 
 resources:
   jobs:
     demo_job:
       name: demo_job
-
-      tasks: 
+      tasks:
         - task_key: run_notebook
-          
           notebook_task:
-            notebook_path: /Workspace/Users/ajit.dwivedi@techygeekhub.com/demo/notebooks/merge_into_scenerios
+            notebook_path: ./notebooks/merge_into_scenerios
+      schedule:
+        quartz_cron_expression: "0 0 6 * * ?"
+        timezone_id: "Asia/Kolkata"
+        pause_status: PAUSED
 
-
-
-
-
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-b889ed86-55c4.cloud.databricks.com
